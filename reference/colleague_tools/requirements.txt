@@ -1,0 +1,15 @@
+# Dépendances des tools Strands du X2.
+#
+# strands-agents : le SDK des agents/tools. À installer DANS l'interpréteur python
+#   qui porte ROS2 Humble sur le robot (python3.10 système), sinon strands et rclpy
+#   ne coexistent pas. Si venv : le créer avec --system-site-packages.
+strands-agents>=1.0.0
+
+# boto3 : upload S3 du tool capture_and_upload_photo (import différé dans le tool, donc le
+#   fichier se lint sans, mais boto3 doit être installé CÔTÉ ROBOT — là où tourne le serveur
+#   MCP — pour que l'upload marche). Credentials AWS via variables d'env côté robot.
+boto3>=1.34.0
+
+# NON listés ici car fournis par l'environnement ROS2 sourcé (jamais pip) :
+#   rclpy          -> source /opt/ros/humble/setup.bash
+#   aimdk_msgs     -> source .../aimdk_msgs/.../local_setup.bash
